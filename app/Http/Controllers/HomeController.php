@@ -30,7 +30,7 @@ class HomeController extends Controller
     }
     public function cat()
     {
-        $contact= Contacts::get();
+        $category= Groupe::get();
         return view('groupes',compact('category'));
     }
 }

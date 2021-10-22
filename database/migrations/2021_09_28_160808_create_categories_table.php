@@ -17,17 +17,17 @@ class CreateCategoriesTable extends Migration
             $table->id();
 
             $table->string('name',20);
-            
+
 
             // $table->foreign('contact_id')->constrained('contacts')->onDelete('cascade');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')
+            $table->unsignedBigInteger('contact_id');
+            $table->foreign('contact_id')
                 ->references('id')
-                ->on('categories')
+                ->on('contacts')
                 ->onDelete('restrict');
 
            // $table->foreign('contact_id')->references('id')->on('contacts')->onDelet('cascade');
-            
+
             $table->timestamps();
         });
     }
