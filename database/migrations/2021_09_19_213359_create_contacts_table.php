@@ -20,7 +20,7 @@ class CreateContactsTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('location');
-            $table->binary('photo');
+            
             $table->timestamps();
         });
     }

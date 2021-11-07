@@ -1,5 +1,5 @@
 <?php
-
+use App\HTTP\Controllers\ContactsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
  
 
-
+Route::resource('contacts',ContactsController::class);
 
 Auth::routes();
 

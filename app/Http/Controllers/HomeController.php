@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Contacts;
+use App\Models\Contact;
 use App\Models\Groupe;
 
 class HomeController extends Controller
@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $contact= Contacts::get();
+        $contact= Contact::get();
         return view('home',compact('contact'));
     }
     public function cat()
