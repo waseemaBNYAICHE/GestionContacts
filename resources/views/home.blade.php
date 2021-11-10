@@ -71,16 +71,16 @@
                         
 
                          <td>
-                         <form  action="{{ route('contacts.destroy',$contact->$id) }}" method="POST">
+                         <form  action="{{ route('contacts.destroy',$item->id) }}" method="POST">
    
-                    <a class="btn btn-outline-primary" href="">View</a>
+                    <a class="btn btn-outline-primary" href="{{ route('contacts.show',$item->id) }}">Show</a>
     
-                    <a class="btn btn-outline-success" href="">Update</a>
+                    <a class="btn btn-outline-success" href="{{ route('contacts.edit',$item->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')
       
-                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    <button type="submit" class="btn btn-outline-danger" >Delete</button>
                 </form>
                         
                          </td>

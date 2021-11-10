@@ -51,7 +51,7 @@ class ContactsController extends Controller
 
         Contact::create($request->all());
         return redirect()->route('home')
-                    ->with('success','Contact add with success');
+                    ->with('success','Contact created successfully');
     }
 
     /**
@@ -62,8 +62,13 @@ class ContactsController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $contact = Contact::find($id);
+        return view('contacts.show',compact('contact'));
+
+      
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -71,9 +76,11 @@ class ContactsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Contact $id)
     {
-        //
+        $item = Contact::find($id);
+        
+        return view('contacts.edit',compact('item'));
     }
 
     /**
@@ -83,9 +90,22 @@ class ContactsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Contact $id)
     {
         //
+        $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'location' => 'required'
+        ]);
+        $item = Contact::find($id);
+    
+        $item->update($request->all());
+    
+        return redirect()->route('home')
+                        ->with('success','Product updated successfully');
     }
 
     /**
@@ -97,7 +117,9 @@ class ContactsController extends Controller
     public function destroy( $id)
     {
     
-        $contact=Contact    
+        $contact=Contact::find($id)  ;
+       
+        $contact->delete();
         return redirect()->route('home')
                         ->with('success','Product successfully deleted');
     }
